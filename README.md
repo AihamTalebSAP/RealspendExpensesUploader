@@ -1,11 +1,9 @@
 Expense Uploader
 ================
-
-Allows posting budgets and expenses to HCP RealSpend API through ERP JCO connection.
+Allows posting budgets and expenses to HCP RealSpend API through SAP ERP JCO connection.
 
 Prerequisites
 -------------
-
 - Java 1.6 or higher
 - Maven
 - sapjco3: https://websmp108.sap-ag.de/~sapidb/011000358700007415502002E/#2
@@ -14,13 +12,12 @@ Run Instructions
 ----------------
 - Make sure you have installed all the prerequisites on your local machine.
 - Clone the repository, and in the command-line change your current directory to it.
-- Edit the file system.jcoDestination and insert the correct credentials of your username and password of the ERP system.
+- Edit the file system.jcoDestination and insert the correct credentials of your username and password of the SAP ERP system.
 - Run the commands shown in the **Build** section below.
 - You can either run the shell script run.sh now, or simply copy the command shown under the **Run** section below and run it on the command-line. Make sure you replace the command line parameters with the correct desired values.
 
 Build
 -----
-
 ```
 mvn clean package
 cp system.jcoDestination target/
@@ -28,12 +25,10 @@ cp system.jcoDestination target/
 
 Run
 ---
-
 - Run the jar like this:
 ```
 java -cp ~/sapjco3/sapjco3.jar:target/expense-uploader-0.1-jar-with-dependencies.jar com.sap.expenseuploader.ExpenseUploader --from=20150301 --to=20150501 --controlling-area=0001 --period=004 --input_erp=system --output_hcp="https://devx07e60597.neo.ondemand.com/core/api/v1" --proxy=proxy.wdf.sap.corp:8080 --with_budgets
 ```
-
 
 Notes
 -----
