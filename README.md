@@ -1,5 +1,5 @@
-Expense Uploader
-================
+RealSpend Expenses Uploader
+===========================
 Allows posting budgets and expenses to HCP RealSpend API through SAP ERP JCO connection.
 
 Prerequisites
