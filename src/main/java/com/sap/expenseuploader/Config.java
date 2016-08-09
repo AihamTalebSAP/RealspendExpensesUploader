@@ -131,7 +131,7 @@ public class Config
                 System.out.println("Unable to prompt for username!");
                 return null;
             }
-            this.hcpUser = System.console().readLine("Username: ");
+            this.hcpUser = System.console().readLine("HCP Username: ");
         }
         return this.hcpUser;
     }
@@ -144,7 +144,7 @@ public class Config
                 System.out.println("Unable to prompt for password!");
                 return null;
             }
-            this.hcpPass = new String(System.console().readPassword("Password: "));
+            this.hcpPass = new String(System.console().readPassword("HCP Password: "));
         }
         return this.hcpPass;
     }

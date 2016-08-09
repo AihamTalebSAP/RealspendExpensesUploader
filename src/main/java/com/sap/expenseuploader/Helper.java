@@ -79,7 +79,7 @@ public class Helper
                 + "\' is not authorized to perform http requests to HCP or wrong username/password provided.");
         }
         String csrfToken = responseCsrfHeader.getValue();
-        System.out.println("Got CSRF token " + csrfToken);
+
         return csrfToken;
     }
 

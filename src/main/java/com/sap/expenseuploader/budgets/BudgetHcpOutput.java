@@ -112,36 +112,42 @@ public class BudgetHcpOutput
         payload.addProperty("user", user);
         JsonArray budgets = new JsonArray();
         for( String tagName : entries.keySet() ) {
-            long tagId = this.tagNameIds.get(tagGroupName).get(tagName);
-            for( BudgetEntry entry : entries.get(tagName) ) {
-                JsonObject budget = new JsonObject();
-                budget.addProperty("id", tagId);
-                budget.addProperty("name", tagName);
-                budget.addProperty("amount", entry.amount);
-                budget.addProperty("currency", entry.currency);
-                budget.addProperty("period", entry.period);
-                budgets.add(budget);
+            if( this.tagNameIds.containsKey(tagGroupName) && this.tagNameIds.get(tagGroupName).containsKey(tagName) ) {
+                long tagId = this.tagNameIds.get(tagGroupName).get(tagName);
+                for( BudgetEntry entry : entries.get(tagName) ) {
+                    JsonObject budget = new JsonObject();
+                    budget.addProperty("id", tagId);
+                    budget.addProperty("name", tagName);
+                    budget.addProperty("amount", entry.amount);
+                    budget.addProperty("currency", entry.currency);
+                    budget.addProperty("period", entry.period);
+                    budgets.add(budget);
+                }
             }
         }
         payload.add("budgets", budgets);
 
-        long tagGroupId = this.tagGroupIds.get(tagGroupName);
-        URIBuilder uriBuilder = new URIBuilder(this.config.getOutput() + "/rest/budget/dimension/" + tagGroupId);
+        if( this.tagGroupIds.containsKey(tagGroupName) ) {
+            long tagGroupId = this.tagGroupIds.get(tagGroupName);
+            URIBuilder uriBuilder = new URIBuilder(this.config.getOutput() + "/rest/budget/dimension/" + tagGroupId);
 
-        Request request = Request.Put(uriBuilder.build())
-            .addHeader("x-csrf-token", csrfToken)
-            .bodyString(payload.toString(), ContentType.APPLICATION_JSON);
-        Response httpResponse = withOptionalProxy(this.config.getProxy(), request).execute();
+            Request request = Request.Put(uriBuilder.build())
+                .addHeader("x-csrf-token", csrfToken)
+                .bodyString(payload.toString(), ContentType.APPLICATION_JSON);
+            Response httpResponse = withOptionalProxy(this.config.getProxy(), request).execute();
 
-        int statusCode = httpResponse.returnResponse().getStatusLine().getStatusCode();
-        if( statusCode == 200 ) {
-            System.out.println(String.format("Successfully uploaded %s tag budgets for user %s", entries.size(), user));
-        } else {
-            System.out.println(String.format("Got http code %s while uploading %s tag budgets for user %s",
-                statusCode,
-                entries.size(),
-                user));
-            System.out.println(httpResponse);
+            int statusCode = httpResponse.returnResponse().getStatusLine().getStatusCode();
+            if( statusCode == 200 ) {
+                System.out.println(String.format("Successfully uploaded %s tag budgets for user %s",
+                    entries.size(),
+                    user));
+            } else {
+                System.out.println(String.format("Got http code %s while uploading %s tag budgets for user %s",
+                    statusCode,
+                    entries.size(),
+                    user));
+                System.out.println(httpResponse);
+            }
         }
     }
 
