@@ -30,7 +30,8 @@ public class ExcelInput extends AbstractInput
         super(config);
     }
 
-    @Override public List<Expense> getExpenses()
+    @Override
+    public List<Expense> getExpenses()
         throws IOException, ParseException
     {
         FileInputStream inputStream = new FileInputStream(new File(config.getInput()));

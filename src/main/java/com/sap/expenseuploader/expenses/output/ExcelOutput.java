@@ -8,7 +8,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +28,8 @@ public class ExcelOutput extends AbstractOutput
         super(config);
     }
 
-    @Override public boolean putExpenses( List<Expense> expenses )
+    @Override
+    public boolean putExpenses( List<Expense> expenses )
     {
 
         int rowCount = 0;

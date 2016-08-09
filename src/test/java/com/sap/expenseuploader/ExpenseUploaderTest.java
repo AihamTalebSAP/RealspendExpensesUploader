@@ -20,7 +20,8 @@ import static org.mockito.Mockito.when;
 
 public class ExpenseUploaderTest
 {
-    @Test public void testErpInput()
+    @Test
+    public void testErpInput()
         throws JCoException
     {
         Config config = mock(Config.class);
@@ -32,7 +33,8 @@ public class ExpenseUploaderTest
         when(config.getCostCenterList()).thenReturn(Arrays.asList("MARKETING", "SAP-DUMMY"));
     }
 
-    @Test public void testExcelInput()
+    @Test
+    public void testExcelInput()
     {
         try {
             Config config = mock(Config.class);
@@ -46,7 +48,8 @@ public class ExpenseUploaderTest
         }
     }
 
-    @Test public void testExcelOutput()
+    @Test
+    public void testExcelOutput()
         throws ParseException
     {
         Config config = mock(Config.class);
@@ -61,7 +64,8 @@ public class ExpenseUploaderTest
         outputFile.delete();
     }
 
-    @Test public void testDeltamerge()
+    @Test
+    public void testDeltamerge()
         throws ParseException
     {
         List<Expense> sourceExpenses = new ArrayList<>();
@@ -90,7 +94,8 @@ public class ExpenseUploaderTest
         assertEquals(expectedExpenses, Helper.getExpensesToAdd(sourceExpenses, targetExpenses));
     }
 
-    @Test public void testConfig()
+    @Test
+    public void testConfig()
         throws IOException, ParseException, org.json.simple.parser.ParseException
     {
         Config config = new Config("",
@@ -107,7 +112,8 @@ public class ExpenseUploaderTest
         assertEquals("[alex, bob, d061519]", config.getUserList().toString());
     }
 
-    @Test public void testTagBudgets()
+    @Test
+    public void testTagBudgets()
         throws IOException, org.json.simple.parser.ParseException
     {
         Config config = new Config("",

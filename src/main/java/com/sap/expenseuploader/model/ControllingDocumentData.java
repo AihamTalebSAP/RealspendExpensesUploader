@@ -24,7 +24,8 @@ public class ControllingDocumentData
         return documentDate;
     }
 
-    @Override public String toString()
+    @Override
+    public String toString()
     {
         return "Document Date = " + this.documentDate + " -- Document Currency = " + this.documentCurrency;
     }

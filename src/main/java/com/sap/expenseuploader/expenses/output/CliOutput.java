@@ -18,7 +18,8 @@ public class CliOutput extends AbstractOutput
         super(config);
     }
 
-    @Override public boolean putExpenses( List<Expense> expenses )
+    @Override
+    public boolean putExpenses( List<Expense> expenses )
     {
 
         for( Expense expense : expenses ) {

@@ -26,7 +26,8 @@ public class BudgetEntry
         this.period = (long) obj.get("period");
     }
 
-    @Override public String toString()
+    @Override
+    public String toString()
     {
         return String.format("[%s, %s, %s]", amount, currency, period);
     }

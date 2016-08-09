@@ -35,7 +35,8 @@ public class ExpenseHcpOutput extends AbstractOutput
         }
     }
 
-    @Override public boolean putExpenses( List<Expense> expenses )
+    @Override
+    public boolean putExpenses( List<Expense> expenses )
     {
         try {
             // Get CSRF token and authenticate

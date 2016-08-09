@@ -12,10 +12,12 @@ public class Expense implements Comparable<Expense>
 {
     private Date date;
     private String type;
-    @SerializedName( "cost-center" ) private String costCenter;
+    @SerializedName( "cost-center" )
+    private String costCenter;
     private String account;
     private String requester;
-    @SerializedName( "internal-order" ) private String internalOrder;
+    @SerializedName( "internal-order" )
+    private String internalOrder;
     private String context;
     private transient String requestID;
     private Double amount;
@@ -136,7 +138,8 @@ public class Expense implements Comparable<Expense>
         return o1.compareTo(o2);
     }
 
-    @Override public int compareTo( Expense other )
+    @Override
+    public int compareTo( Expense other )
     {
         int result;
         result = nullSafeCompare(this.date, other.getDate());
@@ -158,7 +161,8 @@ public class Expense implements Comparable<Expense>
         return 0;
     }
 
-    @Override public boolean equals( Object other )
+    @Override
+    public boolean equals( Object other )
     {
         if( !(other instanceof Expense) ) {
             return false;
@@ -166,7 +170,8 @@ public class Expense implements Comparable<Expense>
         return this.compareTo((Expense) other) == 0;
     }
 
-    @Override public String toString()
+    @Override
+    public String toString()
     {
         return this.fields.toString();
     }

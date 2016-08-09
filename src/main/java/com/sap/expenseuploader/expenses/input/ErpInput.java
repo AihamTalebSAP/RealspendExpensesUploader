@@ -39,7 +39,8 @@ public class ErpInput extends AbstractInput
      * @return
      * @throws JCoException
      */
-    @Override public List<Expense> getExpenses()
+    @Override
+    public List<Expense> getExpenses()
     {
         List<Expense> expenses = new ArrayList<>();
 
