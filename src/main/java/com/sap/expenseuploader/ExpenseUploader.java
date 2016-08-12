@@ -37,7 +37,8 @@ public class ExpenseUploader
             options.addOption("out_xls", "output_xls", true, "path to output excel file");
             options.addOption("p", "period", true, "period (optional), e.g. 001");
             options.addOption("with_budgets", "with_budgets", false, "with budgets (optional)");
-            options.addOption("u", "user", true, "username (optional), e.g. hans");
+            options.addOption("u", "hcp_user", true, "your hcp username (optional), e.g. hans");
+            options.addOption("ps", "hcp_password", true, "your hcp password (optional)");
             options.addOption("x", "proxy", true, "proxy server (optional), e.g. example.com:8080");
             options.addOption("h", "help", false, "print this message");
             CommandLineParser parser = new DefaultParser();
@@ -55,7 +56,7 @@ public class ExpenseUploader
                 cmd.getOptionValue("t"),
                 cmd.getOptionValue("p"),
                 cmd.getOptionValue("u"),
-                null,
+                cmd.getOptionValue("ps"),
                 cmd.getOptionValue("x"),
                 "budgets.json",
                 "costcenters.json",
